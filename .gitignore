@@ -12,3 +12,6 @@ htmlcov/
 dist/
 build/
 *.egg-info/
+
+index_tracker/nb.ipynb
+index_tracker/secret_info.py

@@ -20,7 +20,6 @@ CREATE TABLE stock (
     market_cap REAL NOT NULL,
     current_price REAL NOT NULL,
     previous_price REAL NOT NULL,
-    PE_ratio REAL NOT NULL,
     day_low REAL NOT NULL,
     day_high REAL NOT NULL,
     year_week_low REAL NOT NULL,
