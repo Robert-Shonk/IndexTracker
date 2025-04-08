@@ -1,2 +1,2 @@
-# SnP500-Tracker
-Website that presents various data of the stocks currently on the S&amp;P500
+# IndexTracker
+Website that presents various data of the stocks currently listed on various stock market indexes.
