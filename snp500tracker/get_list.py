@@ -9,7 +9,7 @@ headers = {
 }
 url = 'https://en.wikipedia.org/wiki/List_of_S%26P_500_companies'
 
-con = sqlite3.connect('instance\\snp500tracker.sqlite')
+con = sqlite3.connect('C:\\Users\\rshon\\Desktop\\Projects\\SnP500-Tracker\\instance\\snp500tracker.sqlite')
 cur = con.cursor()
 req = requests.get(url, headers=headers)
 
