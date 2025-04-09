@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+}
+
+nav {
+    background-color: lightblue;
+    height: 3rem;
+    padding-top: 1rem;
+    padding-left: .5rem;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.main2 {
+    
+}
