@@ -13,9 +13,20 @@
         </div>
         <div id="sectors_widescreen">
             {% for sector in sectors %}
-                    <div class="sector_box">
-                        {{ sector['sector'] }}
+                <div class="sector_box">
+                    <div class="sector_box_name">
+                        <a href="{{ url_for('index.sector', selected_sector=sector['sector']) }}">{{ sector['sector'] }} </a>
                     </div>
+                    {% if sector['move'] >= 0 %}
+                        <div class="sector_box_move" style="color: green;">
+                            {{ sector['move']|round(2) }}%
+                        </div>
+                    {% else %}
+                        <div class="sector_box_move" style="color: #EE4B2B;">
+                            {{ sector['move']|round(2) }}%
+                        </div>
+                    {% endif %}
+                </div>
             {% endfor %}
         </div>
         <div id="selected_sector">
@@ -71,7 +82,18 @@
         <div id="sectors_mobile">
             {% for sector in sectors %}
                 <div class="sector_box">
-                    <a href="{{ url_for('index.sector', selected_sector=sector['sector']) }}">{{ sector['sector'] }} </a>
+                    <div class="sector_box_name">
+                        <a href="{{ url_for('index.sector', selected_sector=sector['sector']) }}">{{ sector['sector'] }} </a>
+                    </div>
+                    {% if sector['move'] >= 0 %}
+                        <div class="sector_box_move" style="color: green;">
+                            {{ sector['move']|round(2) }}%
+                        </div>
+                    {% else %}
+                        <div class="sector_box_move" style="color: #EE4B2B;">
+                            {{ sector['move']|round(2) }}%
+                        </div>
+                    {% endif %}
                 </div>
             {% endfor %}
         </div>

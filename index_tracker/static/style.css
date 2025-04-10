@@ -30,12 +30,46 @@ nav {
     flex-direction: row;
 }
 
+.sector_stocks {
+    width: 100%;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 5% 5% 10% auto;
+    padding: .25vh;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.move_column{
+    text-align: center;
+}
+
+.price_column {
+    text-align: center;
+}
+
 .sector_box {
     padding: 1rem;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    background-color: aliceblue;
+    border-radius: 10px;
+}
+
+.sector_box_move {
+    text-align: center;
 }
 
 #sectors_mobile {
     display: none;
+}
+
+#stocks {
+    height: 75vh;
+    overflow-y: auto;
+    padding-right: 8px;
 }
 
 @media (max-width: 1000px) {
@@ -95,8 +129,17 @@ nav {
     }
 
     .sector_box {
-        margin-left: 1rem;
-        margin-right: 1rem;
+        display: flex;
+        flex-direction: row;
+        background-color:aliceblue;
+        border-radius: 10px;
+        margin-left: .5rem;
+        margin-right: .5rem;
+    }
+
+    .sector_box_move {
+        margin-left: .5rem;
+        margin-top: .25rem;
     }
 
     #symbol_table {
