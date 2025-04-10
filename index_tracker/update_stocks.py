@@ -57,6 +57,19 @@ for symbol in symbols:
 print(f'Scrape complete. Total time: {total_time}.')
 
 df = pd.DataFrame(data)
+
+market_cap_billions = []
+for row in range(len(df)):
+    mc = df.iloc[row]['market_cap']
+
+    if 'B' in mc:
+        mc_float = float(mc.strip('B'))
+
+    elif 'T' in mc:
+        mc_float = float(mc.strip('T'))*1000
+
+    market_cap_billions.append(mc_float)
+
 if len(df) == 500:
     df.to_sql('stock', con, if_exists='replace', index=False)
     print('Saved to database.')
