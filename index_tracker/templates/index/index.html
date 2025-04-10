@@ -4,14 +4,50 @@
 
 {% block content %}
     <div class="main">
-        <div class="main1">
-
+        <div id="indicies">
+            <div class="index_box">
+                <div id="snp">
+                    S&P500
+                </div>
+            </div>   
         </div>
-        <div class="main2">
-            <p>main2</p>
+        <div id="sectors_widescreen">
+            {% for sector in sectors %}
+                <div class="sector_box">
+                    {{ sector['sector'] }}
+                </div>
+            {% endfor %}
         </div>
-        <div class="main3">
-
+        <div id="selected_sector">
+            <h2>Sector name</h2>
+        </div>
+        <div id="stocks">
+            <div class="sector_stocks">
+                <table id="symbol_table">
+                    <tr>
+                        <th style="text-align: left; width: 25%;" colspan="2">Stock</th>
+                        <th style="text-align: left;">Market Cap</th>
+                    </tr>
+                    {% for stock in stocks %}
+                        {% if stock['sector'] == 'Consumer Discretionary' %}
+                            <tr class="symbol_data">
+                                <td class="symbol">{{ stock['symbol'] }}</td>
+                                <td class="move">{{ stock['move']|round(2) }}%</td>
+                                <td class="market_cap_bar">{{ stock['market_cap'] }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div id="sectors_mobile">
+            {% for sector in sectors %}
+                <div class="sector_box">
+                    {{ sector['sector'] }}
+                </div>
+            {% endfor %}
         </div>
     </div>
+
+    
 {% endblock %}

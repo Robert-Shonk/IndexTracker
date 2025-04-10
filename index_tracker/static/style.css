@@ -4,16 +4,86 @@
 
 nav {
     background-color: lightblue;
-    height: 3rem;
-    padding-top: 1rem;
-    padding-left: .5rem;
+}
+
+#indicies {
+    text-align: center;
+}
+
+#sectors {
+    margin-top: .5rem;
+    text-align: center;
+}
+
+#stocks {
+    margin-top: 1rem;
 }
 
 .main {
-    display: grid;
-    grid-template-columns: auto auto auto;
+    margin-left: 15rem;
+    margin-right: 15rem;
 }
 
-.main2 {
-    
+#sectors_widescreen {
+    display: flex;
+    flex-direction: row;
+}
+
+.sector_box {
+    padding: 1rem;
+}
+
+#sectors_mobile {
+    display: none;
+}
+
+@media (max-width: 1000px) {
+    .main {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    #sectors_widescreen {
+        display: none;
+    }
+
+    #sectors_mobile {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: .5rem;
+    }
+
+    .sector_stocks {
+        width: 100%;
+    }
+
+    .symbol_data {
+        font-size: 14px;
+    }
+
+    .symbol {
+        text-align: left;
+    }
+
+    .move {
+        text-align: left;
+    }
+
+    .sector_box {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    #symbol_table {
+        width: 100%;
+    }
+
+    #stocks {
+        height: 75vh;
+        overflow-y: auto;
+    }
 }
