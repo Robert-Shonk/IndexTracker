@@ -51,7 +51,7 @@ for symbol in symbols:
     
     time.sleep(random.randint(1, 6))
     end = time.time()
-    total_time += end
+    total_time += (end-start)
     print(f'Time taken: {end - start}')
 
 print(f'Scrape complete. Total time: {total_time}.')
@@ -59,7 +59,7 @@ print(f'Scrape complete. Total time: {total_time}.')
 df = pd.DataFrame(data)
 if len(df) == 500:
     df.to_sql('stock', con, if_exists='replace', index=False)
-    print('Saved to databse.')
+    print('Saved to database.')
 else:
     print('Failed to load to database. Missing data.')
 con.close()
