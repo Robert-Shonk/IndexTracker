@@ -3,18 +3,22 @@ from flask import (
 )
 
 from index_tracker.db import get_db
+import index_tracker.query as query
 
 bp = Blueprint('index', __name__)
 
 @bp.route('/', methods=['GET'])
 def index():
-    db = get_db()
-    sectors = db.execute('SELECT sector FROM snp GROUP BY sector').fetchall()
-    stocks = db.execute(
-        """
-            SELECT *, ((stock.current_price/stock.previous_price)-1)*100 as move FROM stock
-            JOIN snp ON stock.symbol = snp.symbol;
-        """
-    ).fetchall()
+    sectors = query.get_sectors()
+    stocks = query.get_stocks()
+    
+    return render_template('index/index.html', stocks=stocks, sectors=sectors, selected_sector='All')
 
-    return render_template('index/index.html', stocks=stocks, sectors=sectors)
+
+@bp.route('/<selected_sector>', methods=['GET'])
+def sector(selected_sector):
+    sectors = query.get_sectors()
+    stocks = query.get_stocks_by_sector(selected_sector)
+    max_market_cap = query.get_max_mc_by_sector(selected_sector)[0]
+
+    return render_template('index/index.html', sectors=sectors, stocks=stocks, selected_sector=selected_sector, max_market_cap=max_market_cap)

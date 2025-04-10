@@ -7,47 +7,73 @@
         <div id="indicies">
             <div class="index_box">
                 <div id="snp">
-                    S&P500
+                    <a href="{{ url_for('index.index') }}">S&P500</a>
                 </div>
             </div>   
         </div>
         <div id="sectors_widescreen">
             {% for sector in sectors %}
-                <div class="sector_box">
-                    {{ sector['sector'] }}
-                </div>
+                    <div class="sector_box">
+                        {{ sector['sector'] }}
+                    </div>
             {% endfor %}
         </div>
         <div id="selected_sector">
-            <h2>Sector name</h2>
+            <h2>{{ selected_sector }}</h2>
         </div>
         <div id="stocks">
             <div class="sector_stocks">
-                <table id="symbol_table">
-                    <tr>
-                        <th style="text-align: left; width: 25%;" colspan="2">Stock</th>
-                        <th style="text-align: left;">Market Cap</th>
-                    </tr>
-                    {% for stock in stocks %}
-                        {% if stock['sector'] == 'Consumer Discretionary' %}
-                            <tr class="symbol_data">
-                                <td class="symbol">{{ stock['symbol'] }}</td>
-                                <td class="move">{{ stock['move']|round(2) }}%</td>
-                                <td class="market_cap_bar">{{ stock['market_cap'] }}</td>
-                            </tr>
-                        {% endif %}
-                    {% endfor %}
-                </table>
+                <div class="row">
+                    <div class="symbol_column">
+                        <h4>Symbol</h4>
+                    </div>
+                    <div class="move_column">
+                        <h4>Move</h4>
+                    </div>
+                    <div class="price_column">
+                        <h4>Price</h4>
+                    </div>
+                    <div class="market_cap_column" id="mc_title">
+                        <h4>Market Cap</h4>
+                    </div>
+                </div>
+                {% for stock in stocks %}
+                <div class="row">
+                    <div class="symbol_column">
+                        {{ stock['symbol'] }}
+                    </div>
+                    {% if stock['move'] >= 0 %}
+                        <div class="move_column" style="background-color: lightgreen;">
+                            {{ stock['move']|round(1) }}%
+                        </div>
+                    {% else %}
+                        <div class="move_column" style="background-color: #EE4B2B;">
+                            {{ stock['move']|round(1) }}%
+                        </div>
+                    {% endif %}
+                    <div class="price_column">
+                        ${{ stock['current_price'] }}
+                    </div>
+                    {% if max_market_cap %}
+                        <div class="market_cap_column" style="background-color:deepskyblue; width: {{ ((stock['market_cap']/max_market_cap)*100)|round(2) }}%;">
+                            <span>{{ stock['market_cap']|round(0)|int }}B</span>
+                        </div>
+                    {% else %}
+                        <div class="market_cap_column">
+                            <span>{{ stock['market_cap']|round(0)|int }}B</span>
+                        </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                
             </div>
         </div>
         <div id="sectors_mobile">
             {% for sector in sectors %}
                 <div class="sector_box">
-                    {{ sector['sector'] }}
+                    <a href="{{ url_for('index.sector', selected_sector=sector['sector']) }}">{{ sector['sector'] }} </a>
                 </div>
             {% endfor %}
         </div>
     </div>
-
-    
 {% endblock %}
