@@ -14,6 +14,6 @@ build/
 *.egg-info/
 
 index_tracker/nb.ipynb
-index_tracker/secret_info.py
+index_tracker/scrape/secret_info.py
 
 index_tracker/failed_scrape.csv

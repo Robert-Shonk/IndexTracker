@@ -9,7 +9,7 @@ headers = {
 }
 url = 'https://en.wikipedia.org/wiki/List_of_S%26P_500_companies'
 
-con = sqlite3.connect('C:\\Users\\rshon\\Desktop\\Projects\\SnP500-Tracker\\instance\\snp500tracker.sqlite')
+con = sqlite3.connect('C:\\Users\\rshon\\Desktop\\Projects\\IndexTracker\\instance\\snp500tracker.sqlite')
 cur = con.cursor()
 req = requests.get(url, headers=headers)
 
@@ -33,7 +33,7 @@ if req.status_code == 200:
         data['founded'].append(tds[7].text.strip('\n'))
 
     df = pd.DataFrame(data).drop_duplicates(subset=['CIK'], keep='first')
-    df.to_sql('snp', con, if_exists='append', index=False)
+    df.to_sql('snp', con, if_exists='replace', index=False)
     con.close()
 else:
     print('request failed')
