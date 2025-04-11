@@ -49,12 +49,12 @@ for symbol in symbols:
         print(f'[Error] Response code: {req.status_code}')
         print(f'Symbol: {symbol[0]}')
     
-    time.sleep(random.randint(1, 6))
+    time.sleep(random.randint(1, 5))
     end = time.time()
     total_time += (end-start)
     print(f'Time taken: {end - start}')
 
-print(f'Scrape complete. Total time: {total_time}.')
+print(f'Scrape complete. Total time: {total_time/60} minutes.')
 
 df = pd.DataFrame(data)
 
@@ -70,9 +70,13 @@ for row in range(len(df)):
 
     market_cap_billions.append(mc_float)
 
+df['market_cap'] = market_cap_billions
+
 if len(df) == 500:
     df.to_sql('stock', con, if_exists='replace', index=False)
     print('Saved to database.')
 else:
     print('Failed to load to database. Missing data.')
+    print('Saving results to csv...')
+    df.to_csv('failed_scrape.csv', index=False)
 con.close()
