@@ -9,7 +9,8 @@ def get_sectors():
             (SUM(stock.current_price)/SUM(stock.previous_price)-1)*100 as move
             FROM stock
             JOIN snp ON stock.symbol = snp.symbol
-            GROUP BY sector;
+            GROUP BY sector
+            ORDER BY total_market_cap DESC;
         """
     ).fetchall()
 
