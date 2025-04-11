@@ -15,3 +15,5 @@ build/
 
 index_tracker/nb.ipynb
 index_tracker/secret_info.py
+
+index_tracker/failed_scrape.csv

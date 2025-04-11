@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS snp;
+DROP TABLE IF EXISTS index_data;
 DROP TABLE IF EXISTS stock;
 
 CREATE TABLE snp (
@@ -13,6 +14,13 @@ CREATE TABLE snp (
     founded TEXT NOT NULL,
     date_recorded TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE index_data (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    index_name TEXT NOT NULL,
+    current_price REAL NOT NULL,
+    previous_price REAL NOT NULL
+)
 
 CREATE TABLE stock (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
