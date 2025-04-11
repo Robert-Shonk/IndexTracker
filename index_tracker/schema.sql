@@ -20,7 +20,7 @@ CREATE TABLE index_data (
     index_name TEXT NOT NULL,
     current_price REAL NOT NULL,
     previous_price REAL NOT NULL
-)
+);
 
 CREATE TABLE stock (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
