@@ -37,6 +37,11 @@ nav {
     text-align: center;
 }
 
+#view_content {
+    overflow-y: auto;
+    height: 65vh;
+}
+
 #view_content_titles {
     display: flex;
     flex-direction: row;
@@ -48,7 +53,6 @@ nav {
     display: flex;
     flex-direction: row;
     margin-bottom: 3px;
-    padding-right: .5rem;
     border-style: solid;
     border-width: 1px;
     border-left: none;
@@ -57,17 +61,22 @@ nav {
 
 .view_market_cap {
     flex-grow: 1;
+    margin-left: .5rem;
 }
 
 .view_col1 {
-    width: 7em;
+    width: 3.5em;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
+.view_col_stockprice {
+    width: 3.5em;
+}
+
 .view_col2 {
-    width: 3.2em;
+    width: 3.4em;
     margin-left: .25em;
     margin-right: .25em;
 }
