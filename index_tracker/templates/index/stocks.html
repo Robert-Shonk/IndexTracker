@@ -10,31 +10,7 @@
                     S&P500
                 </div>
                 <div class="index_move">
-                    5555 | +1.78%
-                </div>
-            </div>
-            <div class="index_box">
-                <div class="index_name">
-                    Nasdaq100
-                </div>
-                <div class="index_move">
-                    15788 | +2.19%
-                </div>
-            </div>
-            <div class="index_box">
-                <div class="index_name">
-                    Dow
-                </div>
-                <div class="index_move">
-                    35000 | +2.19%
-                </div>
-            </div>
-            <div class="index_box">
-                <div class="index_name">
-                    Russell
-                </div>
-                <div class="index_move">
-                    1788 | -0.93%
+                    {{ index_data[0]['current_price'] }} | {{ index_data[0]['move']|round(2) }}%
                 </div>
             </div>
         </div>
@@ -63,6 +39,7 @@
                 </div>
             </div>
             
+            <div id="vc">
             <!-- each view_content_data will be created in loops -->
             {% for stock in stocks %}
                 <div class="view_content_data">
@@ -88,6 +65,7 @@
                     </div>
                 </div>
             {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}

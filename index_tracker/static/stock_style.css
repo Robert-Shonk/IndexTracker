@@ -37,9 +37,9 @@ nav {
     text-align: center;
 }
 
-#view_content {
+#vc {
     overflow-y: auto;
-    height: 65vh;
+    height: 80vh;
 }
 
 #view_content_titles {

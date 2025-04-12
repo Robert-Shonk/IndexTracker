@@ -48,15 +48,12 @@ def get_stocks_by_sector(sector):
 
     return stocks
 
-def get_max_mc_by_sector(sector):
+def get_index_data():
     db = get_db()
-    max_market_cap = db.execute(
+    index_data = db.execute(
         """
-            SELECT MAX(stock.market_cap) FROM stock
-            JOIN snp ON stock.symbol = snp.symbol
-            WHERE sector = ?;
-        """,
-        (sector,)
-    ).fetchone()
+            SELECT *, ((current_price/previous_price)-1)*100 as move FROM index_data;
+        """
+    ).fetchall()
 
-    return max_market_cap
+    return index_data
